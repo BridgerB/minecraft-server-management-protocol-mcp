@@ -52,21 +52,38 @@ provides tools for managing Minecraft servers via the
 
 ## Usage with Claude Code
 
-Add this server to your Claude Code configuration:
+### Adding the MCP Server
+
+To add this server to Claude Code, run:
 
 ```bash
-claude mcp add --transport stdio minecraft-server \\
-  -- deno run --allow-net --allow-read --allow-env \\
+claude mcp add --scope user --transport stdio minecraft-server -- \
+  deno run --unstable-net --allow-net --allow-read --allow-env \
   /home/bridger/git/minecraft-server-management-protocol-mcp/main.ts
 ```
 
-Then in Claude Code, you can use commands like:
+**Note**: The `--unstable-net` flag is required because this server uses Deno's `WebSocketStream` API with header support, which is currently an unstable feature.
+
+### Removing the MCP Server
+
+If you need to remove or update the server configuration:
+
+```bash
+claude mcp remove minecraft-server
+```
+
+Then re-add it with the command above.
+
+### Using the Tools
+
+Once added, you can interact with your Minecraft servers through Claude Code:
 
 ```
 > How many players are on the production server?
 > Kick player "Griefer123" from production with message "Banned for griefing"
 > Get the server status for production
 > Add "NewPlayer" to the allowlist on production
+> Send a message "Server restarting in 5 minutes" to all players
 ```
 
 ## Available Tools
