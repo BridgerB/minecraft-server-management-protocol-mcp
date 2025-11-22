@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "production": {
+      "url": "ws://132.226.99.230:9090",
+      "secret": "your-40-character-secret-here-CHANGEME"
+    },
+    "local": {
+      "url": "ws://localhost:9090",
+      "secret": "your-local-server-secret-CHANGEME"
+    }
+  }
+}
